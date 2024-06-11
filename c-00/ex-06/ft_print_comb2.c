@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: miler <marvin@42.fr>                     +#+  +:+       +#+          */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/11 21:22:11 by miler           #+#    #+#               */
-/*   Updated: 2024/06/11 18:55:23 by miler          ###   ########.fr         */
+/*   Created: 2024/06/11 20:22:11 by miler           #+#    #+#               */
+/*   Updated: 2024/06/11 17:55:23 by miler          ###   ########.fr         */
 /*                                                                            */
 /* ************************************************************************** */
 #include <unistd.h>
@@ -15,12 +15,12 @@ void    write_number(short n)
 {
     char    c;
 
-    if(n <= 10)
+    if(n < 10)
     {
         c = n + 48;
         write(1, "0", 1);
         write(1, &c, 1);
-        return;
+        return ;
     }
     c = (n / 10) + 48;
     write(1, &c, 1);
@@ -32,11 +32,12 @@ void    write_number(short n)
 void    ft_print_comb2(void)
 {
     short   v[2];
+    v[0] = 0;
 
-    while(v[0] <= 99)
+    while(v[0] < 99)
     {
         v[1] = v[0] + 1;
-        while(v[1] <= 100)
+        while(v[1] < 100)
         {
             write_number(v[0]);
             write(1, " ", 1);
