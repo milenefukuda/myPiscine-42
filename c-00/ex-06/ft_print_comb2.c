@@ -11,34 +11,43 @@
 /* ************************************************************************** */
 #include <unistd.h>
 
-void    write_number(int a, int b)
+void    write_number(short n)
 {
-    int     n;
+    char    c;
 
-    a = (n / 10) + 48;
-    write(1, &a, 1);
-    b = (n % 10) + 48;
-    write(1, &b, 1);
+    if(n <= 10)
+    {
+        c = n + 48;
+        write(1, "0", 1);
+        write(1, &c, 1);
+        return;
+    }
+    c = (n / 10) + 48;
+    write(1, &c, 1);
+    c = (n % 10) + 48;
+    write(1, &c, 1);
 
 }
 
 void    ft_print_comb2(void)
 {
-    int     x;
-    int     y;
-    x = 0;
+    short   v[2];
 
-    while(x <= 98)
+    while(v[0] <= 99)
     {
-        y = x + 1;
-        while(y <= 99)
+        v[1] = v[0] + 1;
+        while(v[1] <= 100)
         {
-            write_number(x, y);
-            if(x != 98 || y != 99);
-            write(1, ".\n", 2);
-            y++;
+            write_number(v[0]);
+            write(1, " ", 1);
+            write_number(v[1]);
+            if(v[0] == 98 && v[1] == 99)
+                write(1, ".\n", 2);
+            else
+                write(1, " ", 2);
+            v[1]++;
         }
-        x++;
+        v[0]++;
     }
 }
 
