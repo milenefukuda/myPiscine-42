@@ -1,33 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_swap.c                                           :+:      :+:    :+:  */
+/*   ft_ultimate_div_mod.c                               :+:      :+:    :+:  */
 /*                                                    +:+ +:+         +:+     */
 /*   By: miler <marvin@42.fr>                     +#+  +:+       +#+          */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/15 12:13:11 by miler           #+#    #+#               */
+/*   Created: 2024/06/15 15:49:24 by miler           #+#    #+#               */
 /*   Updated: 2024/06/15 19:37:21 by miler          ###   ########.fr         */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
+#include <stdlib.h>
 
-void    ft_swap(int *a, int *b)
+void    ft_ultimate_div_mod(int *a, int *b)
 {
     int     tmp;
+
+    if(*b)
+    {
     tmp = *a;
-    *a = *b;
-    *b = tmp;
-    // comma operator is more compact!
-    // tmp = *a, *a = *b, *b = tmp;
+    *a = *a / *b;
+    *b = tmp % *b;
+    }
 }
 
 int     main(void)
 {
-    int     x;
-    int     y;
-    x = 42;
-    y = 24;
-    printf("Before swap %d %d\n", x, y);
-    ft_swap(&x, &y);
-    printf("After swap %d %d\n", x, y);
+    int     a;
+    int     b;
+
+    for(int i=0; i<10; i++)
+    {
+        a = rand()%101;
+        b = rand()%10 + 1;
+        printf("a=%d b=%d\n", a, b);
+        printf("quotient=%d module=%d\n", a/b, a%b);
+        ft_ultimate_div_mod(&a, &b);
+        printf("-----from my func-----\n");
+        printf("quotient=%d module=%d\n\n", a, b);
+    }
+
 }

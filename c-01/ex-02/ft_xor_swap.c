@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_swap.c                                           :+:      :+:    :+:  */
+/*   ft_xor_swap.c                                       :+:      :+:    :+:  */
 /*                                                    +:+ +:+         +:+     */
 /*   By: miler <marvin@42.fr>                     +#+  +:+       +#+          */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/15 12:13:11 by miler           #+#    #+#               */
-/*   Updated: 2024/06/15 19:37:21 by miler          ###   ########.fr         */
+/*   Created: 2024/06/15 13:37:24 by miler           #+#    #+#               */
+/*   Updated: 2024/06/15 14:35:21 by miler          ###   ########.fr         */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
 
-void    ft_swap(int *a, int *b)
+void    ft_xor_swap(int *a, int *b)
 {
-    int     tmp;
-    tmp = *a;
-    *a = *b;
-    *b = tmp;
-    // comma operator is more compact!
-    // tmp = *a, *a = *b, *b = tmp;
+    *a = *a ^ *b;
+    *b = *b ^ *a;
+    *a = *a ^ *b;
 }
 
 int     main(void)
 {
-    int     x;
-    int     y;
+    int x;
+    int y;
     x = 42;
     y = 24;
-    printf("Before swap %d %d\n", x, y);
-    ft_swap(&x, &y);
-    printf("After swap %d %d\n", x, y);
+    printf("\nBefore swap %d %d", x, y);
+    ft_xor_swap(&x, &y);
+    printf("\nAfter swap %d %d\n", x, y);
 }

@@ -1,33 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_swap.c                                           :+:      :+:    :+:  */
+/*   ft_div_mod.c                                        :+:      :+:    :+:  */
 /*                                                    +:+ +:+         +:+     */
 /*   By: miler <marvin@42.fr>                     +#+  +:+       +#+          */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/15 12:13:11 by miler           #+#    #+#               */
+/*   Created: 2024/06/15 13:37:24 by miler           #+#    #+#               */
 /*   Updated: 2024/06/15 19:37:21 by miler          ###   ########.fr         */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
 
-void    ft_swap(int *a, int *b)
+void    ft_div_mod(int a, int b, int *div, int *mod)
 {
-    int     tmp;
-    tmp = *a;
-    *a = *b;
-    *b = tmp;
-    // comma operator is more compact!
-    // tmp = *a, *a = *b, *b = tmp;
+    // any intenger divided by zero is undefined
+    // if(b != 0)
+    if(b)
+    {
+        *div = a /b;
+        *mod = a % b;
+    }
 }
 
 int     main(void)
 {
     int     x;
     int     y;
+    int     div;
+    int     mod;
+
     x = 42;
     y = 24;
-    printf("Before swap %d %d\n", x, y);
-    ft_swap(&x, &y);
-    printf("After swap %d %d\n", x, y);
+
+    ft_div_mod(x, y, &div, &mod);
+    printf("\n%d / %d = %d with remainder %d\n\n", x, y, div, mod);
 }
